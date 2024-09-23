@@ -1,11 +1,22 @@
-class Calculator():
-    
-  def add(self, a, b):
-    return a + b
-  
-  def sub(self, a, b):
-    return a - b
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return jsonify("Hello, world!")
+
+@app.route('/add', methods=['GET'])
+def add():
+    a = request.args.get('a', type=float)
+    b = request.args.get('b', type=float)
+    return jsonify({'result': a + b})
+
+@app.route('/subtract', methods=['GET'])
+def subtract():
+    a = request.args.get('a', type=float)
+    b = request.args.get('b', type=float)
+    return jsonify({'result': a - b})
 
 if __name__ == "__main__":
-    mycal = Calculator()
-    print(mycal.add(5, 10))  # Expected output: 15
+    app.run(debug=True)
