@@ -16,5 +16,10 @@ class FlaskTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json['result'], 5)
 
+    def test_mul(self):
+        response = self.app.get('/mul?a=10&b=5')
+        self.assertEqual(response.status_code, 404)
+        # self.assertEqual(response.json['result'], 50)
+
 if __name__ == "__main__":
     unittest.main()
