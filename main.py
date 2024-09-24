@@ -24,5 +24,11 @@ def mul():
     b = request.args.get('b', type=float)
     return jsonify({'result': a * b})
 
+@app.route('/div', methods=['GET'])
+def div():
+    a = request.args.get('a', type=float)
+    b = request.args.get('b', type=float)
+    return jsonify({'result': a / b})
+
 if __name__ == "__main__":
     app.run(debug=True)
