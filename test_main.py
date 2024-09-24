@@ -21,5 +21,10 @@ class FlaskTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json['result'], 50)
 
+    def test_div(self):
+        response = self.app.get('/div?a=10&b=5')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json['result'], 2)
+
 if __name__ == "__main__":
     unittest.main()
